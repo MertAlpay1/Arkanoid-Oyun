@@ -1,0 +1,106 @@
+{
+  "version": 1,
+  "author": "Mert Alpay",
+  "editor": "wokwi",
+  "parts": [
+    { "type": "wokwi-arduino-nano", "id": "nano", "top": 4.8, "left": 57.1, "attrs": {} },
+    {
+      "type": "board-ssd1306",
+      "id": "oled1",
+      "top": 108.74,
+      "left": 77.03,
+      "attrs": { "i2cAddress": "0x3c" }
+    },
+    { "type": "wokwi-potentiometer", "id": "pot1", "top": 113.9, "left": 211, "attrs": {} },
+    {
+      "type": "wokwi-resistor",
+      "id": "r1",
+      "top": 33.6,
+      "left": 18.65,
+      "rotate": 90,
+      "attrs": { "value": "1000" }
+    },
+    { "type": "wokwi-led", "id": "led1", "top": 102, "left": 23, "attrs": { "color": "red" } },
+    { "type": "wokwi-led", "id": "led2", "top": 130.8, "left": 23, "attrs": { "color": "red" } },
+    { "type": "wokwi-led", "id": "led3", "top": 159.6, "left": 23, "attrs": { "color": "red" } },
+    {
+      "type": "wokwi-resistor",
+      "id": "r2",
+      "top": 33.6,
+      "left": -0.55,
+      "rotate": 90,
+      "attrs": { "value": "1000" }
+    },
+    {
+      "type": "wokwi-resistor",
+      "id": "r3",
+      "top": 33.6,
+      "left": -19.75,
+      "rotate": 90,
+      "attrs": { "value": "1000" }
+    },
+    {
+      "type": "wokwi-7segment",
+      "id": "sevseg1",
+      "top": -80.58,
+      "left": 250.44,
+      "attrs": { "common": "anode", "digits": "2", "colon": "", "color": "red" }
+    },
+    {
+      "type": "wokwi-photoresistor-sensor",
+      "id": "ldr1",
+      "top": 41.6,
+      "left": 231.2,
+      "attrs": {}
+    },
+    {
+      "type": "wokwi-pushbutton-6mm",
+      "id": "btn1",
+      "top": 113,
+      "left": 297.6,
+      "attrs": { "color": "green" }
+    },
+    {
+      "type": "wokwi-pushbutton-6mm",
+      "id": "btn2",
+      "top": 141.8,
+      "left": 297.6,
+      "attrs": { "color": "green" }
+    }
+  ],
+  "connections": [
+    [ "oled1:VCC", "nano:3.3V", "red", [ "v-19.2", "h-28.65" ] ],
+    [ "oled1:SDA", "nano:A4", "green", [ "v0" ] ],
+    [ "nano:A5", "oled1:SCL", "green", [ "v14.4", "h-19.7" ] ],
+    [ "nano:GND.1", "oled1:GND", "black", [ "v24", "h-86.9" ] ],
+    [ "nano:GND.1", "pot1:GND", "black", [ "v134.4", "h38.4" ] ],
+    [ "nano:3.3V", "pot1:VCC", "red", [ "v28.8", "h105.6", "v115.2", "h67.2" ] ],
+    [ "nano:A0", "pot1:SIG", "green", [ "v28.8", "h86.4", "v105.6", "h57.6" ] ],
+    [ "nano:2", "r1:1", "red", [ "v-19.2", "h-134.4" ] ],
+    [ "nano:3", "r2:1", "red", [ "v-19.2", "h-134.4" ] ],
+    [ "nano:4", "r3:1", "red", [ "v-19.2", "h-144" ] ],
+    [ "r2:2", "led2:A", "red", [ "h28.8", "v104.4" ] ],
+    [ "led1:C", "nano:GND.2", "black", [ "v0", "h-38", "v-163.2", "h192" ] ],
+    [ "led2:C", "nano:GND.2", "black", [ "v0", "h-38", "v-192", "h192" ] ],
+    [ "r3:2", "led3:A", "red", [ "h48", "v133.2" ] ],
+    [ "r1:2", "led1:A", "red", [ "h9.6", "v75.6" ] ],
+    [ "led3:C", "nano:GND.2", "black", [ "v0", "h-38", "v-220.8", "h182.4" ] ],
+    [ "nano:5", "sevseg1:A", "green", [ "v-105.6", "h163.2" ] ],
+    [ "nano:6", "sevseg1:B", "green", [ "v-115.2", "h211.2" ] ],
+    [ "nano:7", "sevseg1:C", "green", [ "v-9.6", "h211.2" ] ],
+    [ "nano:8", "sevseg1:D", "green", [ "v-9.6", "h192" ] ],
+    [ "nano:9", "sevseg1:E", "green", [ "v-9.6", "h192" ] ],
+    [ "nano:10", "sevseg1:F", "green", [ "v-96", "h220.8" ] ],
+    [ "nano:11", "sevseg1:G", "green", [ "v-9.6", "h249.6" ] ],
+    [ "nano:12.2", "sevseg1:DIG2", "green", [ "v-134.4", "h105.6" ] ],
+    [ "nano:A1", "sevseg1:DIG1", "green", [ "v0" ] ],
+    [ "nano:3.3V", "ldr1:VCC", "red", [ "v28.8", "h105.6", "v105.6", "h240", "v-144" ] ],
+    [ "nano:GND.1", "ldr1:GND", "black", [ "v134.4", "h220.8", "v-134.4" ] ],
+    [ "nano:A2", "ldr1:DO", "green", [ "v19.2", "h115.2", "v19.2", "h172.8", "v-28.8" ] ],
+    [ "nano:A3", "btn1:1.r", "green", [ "v19.2", "h105.6", "v19.2", "h105.6", "v9.6" ] ],
+    [ "btn1:2.l", "nano:GND.1", "black", [ "h-9.6", "v67.6", "h-86.4" ] ],
+    [ "btn2:2.l", "nano:GND.1", "black", [ "h-9.6", "v38.8", "h-86.4" ] ],
+    [ "nano:13.2", "btn2:1.r", "green", [ "v0", "h19.2", "v67.2", "h105.6", "v38.4" ] ]
+  ],
+  "dependencies": {}
+}
